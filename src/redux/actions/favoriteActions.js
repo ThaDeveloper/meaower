@@ -7,18 +7,19 @@ import axios from 'axios';
 
 const favoritesUrl = 'https://api.thecatapi.com/v1/favourites';
 
-export const postFavorite = imageId => dispatch => {
+export const postFavorite = image => dispatch => {
   dispatch({
     type: POST_FAVORITE
   });
-  const image = {
-    image_id: imageId
+  const body = {
+    image_id: image.id
   };
   axios
-    .post(favoritesUrl, image)
+    .post(favoritesUrl, body)
     .then(() => {
       dispatch({
-        type: POST_FAVORITE_SUCCESS
+        type: POST_FAVORITE_SUCCESS,
+        payload: image
       });
     })
     .catch(err => {

@@ -7,6 +7,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Vote from './components/Vote';
 import VotesTabs from './components/VotesTabs';
+import Favorites from './components/Favorites';
 import store from './redux/store';
 
 const apiKey = 'd3cd1032-2080-4458-91f3-007d2a53a528';
@@ -24,6 +25,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Vote} />
             <Route path='/votes' component={VotesTabs} />
+            <Route path='/favorites' component={Favorites} />
           </Switch>
         </div>
       </Router>

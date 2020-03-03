@@ -3,31 +3,22 @@ import { connect } from 'react-redux';
 
 import { postFavorite } from '../redux/actions/favoriteActions';
 
-class Voted extends Component {
-  state = {
-    favorites: JSON.parse(localStorage.getItem('favorites')) || []
-  };
-
+class Cats extends Component {
   handleFavorite = image => {
-    const { favorites } = this.state;
+    this.props.postFavorite(image);
+    const { favorites } = this.props.favoriting;
     if (favorites.findIndex(img => img.id === image.id) === -1) {
-      this.props.postFavorite(image.id);
-      this.setState({
-        favorites: [...favorites, image]
-      });
-      localStorage.setItem('favorites', JSON.stringify([...favorites, image]));
+      const localFavs = JSON.parse(localStorage.getItem('favorites')) || [];
+      localStorage.setItem('favorites', JSON.stringify([...localFavs, image]));
     } else {
-      this.setState({
-        favorites: this.state.favorites.filter(img => img.id !== image.id)
-      });
       const localFavs = JSON.parse(localStorage.getItem('favorites'));
       const newLocalFavs = localFavs.filter(img => img.id !== image.id);
       localStorage.setItem('favorites', JSON.stringify(newLocalFavs));
     }
   };
-  
+
   render() {
-    const { favorites } = this.state;
+    const { favorites } = this.props.favoriting;
     let votesMarkup = this.props.votes.map((image, index) => (
       <article className='location-listing' key={index}>
         <button
@@ -49,4 +40,4 @@ class Voted extends Component {
 }
 
 const mapStateToProps = state => ({ favoriting: state.favoriting });
-export default connect(mapStateToProps, { postFavorite })(Voted);
+export default connect(mapStateToProps, { postFavorite })(Cats);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import '../styles/votes.css';
-import Voted from './Voted';
+import Cats from './Cats';
 
 export default class Votes extends Component {
   state = {
@@ -13,9 +13,9 @@ export default class Votes extends Component {
     const { selected } = this.props;
     switch (selected) {
       case 'likes':
-        return <Voted votes={likes} />;
+        return <Cats votes={likes} />;
       case 'dislikes':
-        return <Voted votes={dislikes} />;
+        return <Cats votes={dislikes} />;
     }
   }
 }
