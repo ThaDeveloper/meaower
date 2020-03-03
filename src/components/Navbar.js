@@ -18,7 +18,7 @@ export default class Navbar extends Component {
             </li>
 
             <li className='nav-item'>
-              <Link to='/favorites'>Favorites</Link>
+              <Link to='/votes'>Votes</Link>
             </li>
 
             <li className='nav-item'>

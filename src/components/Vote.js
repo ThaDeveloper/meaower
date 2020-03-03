@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import '../vote.css';
+import '../styles/vote.css';
 import { getImage, postVote } from '../redux/actions/votingActions';
 
 class Vote extends Component {
@@ -48,6 +48,7 @@ class Vote extends Component {
         {imageMarkup}
         <div className='reaction'>
           <button
+            className='vote-btn'
             id='dislike-btn'
             onClick={() => this.postDislike(image, 0)}
             disabled={true && loading}
@@ -55,6 +56,7 @@ class Vote extends Component {
             Dislike
           </button>
           <button
+            className='vote-btn'
             id='like-btn'
             onClick={() => this.postLike(image, 1)}
             disabled={true && loading}

@@ -1,0 +1,59 @@
+.grid-container {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1em;
+}
+img {
+  width: 100%;
+  height: auto;
+}
+.favorite-button {
+  position: absolute;
+  background-color: rgb(244, 67, 54);
+  padding: 15px 15px;
+  color: white;
+  font-size: 16px;
+  opacity: 0.9;
+  text-decoration: none;
+  height: 50px;
+  width: 100px;
+  margin: 50% 34% 45% 34%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.location-image {
+  line-height: 0;
+}
+
+.location-listing:hover .favorite-button {
+  opacity: 1;
+  z-index: 1;
+}
+
+.location-image img {
+  filter: blur(0px);
+  transition: filter 0.3s ease-in;
+  transform: scale(1.1);
+}
+.location-listing:hover .location-image img {
+  filter: blur(2px);
+}
+.location-listing {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+}
+
+@media (hover: none) {
+  .favorite-button {
+    opacity: 1;
+  }
+  .location-image img {
+    filter: blur(2px);
+  }
+}

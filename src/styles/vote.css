@@ -30,7 +30,7 @@ img {
   grid-template-columns: 100px 100px;
   justify-content: center;
 }
-button {
+.vote-btn {
   border: none;
   color: white;
   padding: 15px 15px;
@@ -46,7 +46,7 @@ button {
 #dislike-btn {
   background-color: rgb(244, 67, 54);
 }
-button:hover {
+.vote-btn:hover {
   cursor: pointer;
   opacity: 1;
   font-size: 1.1em;
