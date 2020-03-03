@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 
 import votingReducer from './reducers/votingReducer';
 import favoritingReducer from './reducers/favoritingReducer';
+import imageReducer from './reducers/imageReducer';
 
 const initialState = {};
 const middleware = [thunk];
 const reducers = combineReducers({
   voting: votingReducer,
-  favoriting: favoritingReducer
+  favoriting: favoritingReducer,
+  imaging: imageReducer
 });
 
 let store = createStore(

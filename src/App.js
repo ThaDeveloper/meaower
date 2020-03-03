@@ -9,6 +9,7 @@ import Vote from './components/Vote';
 import VotesTabs from './components/VotesTabs';
 import Favorites from './components/Favorites';
 import store from './redux/store';
+import AllImages from './components/AllImages';
 
 const apiKey = 'd3cd1032-2080-4458-91f3-007d2a53a528';
 axios.defaults.headers = {
@@ -26,6 +27,7 @@ function App() {
             <Route exact path='/' component={Vote} />
             <Route path='/votes' component={VotesTabs} />
             <Route path='/favorites' component={Favorites} />
+            <Route path='/browse' component={AllImages} />
           </Switch>
         </div>
       </Router>
