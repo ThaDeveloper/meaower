@@ -1,11 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+import votingReducer from './reducers/votingReducers';
 const initialState = {};
 const middleware = [thunk];
-const reducers = combineReducers({
-});
-
+const reducers = combineReducers({ voting: votingReducer });
 
 let store = createStore(
   reducers,
@@ -16,4 +15,4 @@ let store = createStore(
   )
 );
 
-export default store
+export default store;

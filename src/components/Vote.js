@@ -1,7 +1,74 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export default class Vote extends Component {
+import '../vote.css';
+import { getImage, postVote } from '../redux/actions/votingActions';
+
+class Vote extends Component {
+  componentDidMount() {
+    this.props.getImage();
+  }
+
+  postLike = (image, value) => {
+    const likes = JSON.parse(localStorage.getItem('likes')) || [];
+    if (likes.findIndex(img => img.id === image.id) === -1) {
+      likes.push(image);
+      localStorage.setItem('likes', JSON.stringify(likes));
+    }
+    this.props.postVote(image, value);
+    this.props.getImage();
+  };
+
+  postDislike = (image, value) => {
+    const dislikes = JSON.parse(localStorage.getItem('dislikes')) || [];
+    if (dislikes.findIndex(img => img.id === image.id) === -1) {
+      dislikes.push(image);
+      localStorage.setItem('dislikes', JSON.stringify(dislikes));
+    }
+    this.props.postVote(image, value);
+    this.props.getImage();
+  };
+
   render() {
-    return <div>Voting</div>;
+    const { image, errors, loading } = this.props.voting;
+    let imageMarkup = !loading ? (
+      !errors ? (
+        <div className='profle-image'>
+          <img src={image.url} />
+        </div>
+      ) : (
+        <div className='message'>{errors}</div>
+      )
+    ) : (
+      <div className='message'>Loading ...</div>
+    );
+    return (
+      <div className='voting'>
+        {imageMarkup}
+        <div className='reaction'>
+          <button
+            id='dislike-btn'
+            onClick={() => this.postDislike(image, 0)}
+            disabled={true && loading}
+          >
+            Dislike
+          </button>
+          <button
+            id='like-btn'
+            onClick={() => this.postLike(image, 1)}
+            disabled={true && loading}
+          >
+            Like
+          </button>
+        </div>
+      </div>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  voting: state.voting
+});
+
+export default connect(mapStateToProps, { getImage, postVote })(Vote);
