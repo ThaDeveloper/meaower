@@ -5,8 +5,8 @@ import Voted from './Voted';
 
 export default class Votes extends Component {
   state = {
-    likes: JSON.parse(localStorage.getItem('likes')),
-    dislikes: JSON.parse(localStorage.getItem('dislikes'))
+    likes: JSON.parse(localStorage.getItem('likes')) || [],
+    dislikes: JSON.parse(localStorage.getItem('dislikes')) || []
   };
   render() {
     const { likes, dislikes } = this.state;

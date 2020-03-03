@@ -26,7 +26,7 @@ export default class Navbar extends Component {
             </li>
 
             <li className='nav-item'>
-              <Link to='/upload'>Upload</Link>
+              <Link to='/favorites'>Favorites</Link>
             </li>
           </ul>
         </nav>

@@ -10,11 +10,6 @@ import {
 
 const imageUrl = 'https://api.thecatapi.com/v1/images/search';
 const votesUrl = 'https://api.thecatapi.com/v1/votes';
-const apiKey = 'd3cd1032-2080-4458-91f3-007d2a53a528';
-axios.defaults.headers = {
-  'Content-Type': 'application/json',
-  'x-api-key': apiKey
-};
 
 export const getImage = () => dispatch => {
   dispatch({

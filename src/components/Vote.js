@@ -11,22 +11,22 @@ class Vote extends Component {
   }
 
   postLike = (image, value) => {
+    this.props.postVote(image, value);
     const likes = JSON.parse(localStorage.getItem('likes')) || [];
     if (likes.findIndex(img => img.id === image.id) === -1) {
       likes.push(image);
       localStorage.setItem('likes', JSON.stringify(likes));
     }
-    this.props.postVote(image, value);
     this.props.getImage();
   };
 
   postDislike = (image, value) => {
+    this.props.postVote(image, value);
     const dislikes = JSON.parse(localStorage.getItem('dislikes')) || [];
     if (dislikes.findIndex(img => img.id === image.id) === -1) {
       dislikes.push(image);
       localStorage.setItem('dislikes', JSON.stringify(dislikes));
     }
-    this.props.postVote(image, value);
     this.props.getImage();
   };
 
