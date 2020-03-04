@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    container_name: meaower
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/meaower'
+    environment:
+      - NODE_ENV=development
