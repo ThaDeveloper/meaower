@@ -10,8 +10,6 @@ body {
 }
 .nav-wrapper {
   width: 100%;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
   top: 0;
 }
 
@@ -23,7 +21,7 @@ body {
   overflow: hidden;
   background-image: linear-gradient(15deg, #e0161d 0%, #ed400c 100%);
   color: #fff;
-  z-index: 10;
+  z-index: 1;
 }
 
 .navbar .logo {
@@ -40,10 +38,10 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-self: start;
-  margin-left: 20%;
 }
 
-.nav-item a {
+.nav-item a,
+.navbar .logo a {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 400;
@@ -58,6 +56,18 @@ body {
 }
 .nav li:active {
   text-decoration: underline;
+}
+.nav li {
+  text-align: center;
+}
+.link {
+  height: 50px;
+  display: block;
+  padding: 20px 10px 10px 10px;
+}
+
+.nav-active {
+  background: #c4070d;
 }
 /* mobile menu &  animation */
 
@@ -107,13 +117,16 @@ body {
     flex-direction: column;
     position: fixed;
     justify-content: flex-start;
-    top: 55px;
-    background-color: #fff;
-    width: 100%;
+    top: 49px;
+    background-color: #ed400c;
+    width: 60%;
     height: calc(100vh - 55px);
     transform: translate(-101%);
     text-align: center;
     overflow: hidden;
+    z-index: 1;
+    height: auto;
+    padding-bottom: 7%;
   }
 
   .navbar li {

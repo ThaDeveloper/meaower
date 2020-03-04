@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { postFavorite } from '../redux/actions/favoriteActions';
+import Pagination from './Pagination';
 
 class Cats extends Component {
+  state = {
+    currentPage: 1,
+    imagesPerPage: 9
+  };
+
   handleFavorite = image => {
     this.props.postFavorite(image);
     const { favorites } = this.props.favoriting;
@@ -17,9 +23,22 @@ class Cats extends Component {
     }
   };
 
+  paginate = pageNumber => {
+    this.setState({
+      currentPage: pageNumber
+    });
+  };
+
   render() {
     const { favorites } = this.props.favoriting;
-    let votesMarkup = this.props.votes.map((image, index) => (
+    const { currentPage, imagesPerPage } = this.state;
+    const indexOfLastImage = currentPage * imagesPerPage;
+    const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+    const currentImages = this.props.votes.slice(
+      indexOfFirstImage,
+      indexOfLastImage
+    );
+    let votesMarkup = currentImages.map((image, index) => (
       <article className='location-listing' key={index}>
         <button
           className='favorite-button vote-btn'
@@ -35,7 +54,21 @@ class Cats extends Component {
         </div>
       </article>
     ));
-    return <div className='grid-container'>{votesMarkup}</div>;
+    return (
+      <>
+        <div className='grid-container'>{votesMarkup}</div>
+        {this.props.votes.length > 9 ? (
+          <Pagination
+            currentPage={currentPage}
+            imagesPerPage={imagesPerPage}
+            totalImages={this.props.votes.length}
+            paginate={this.paginate}
+          />
+        ) : (
+          ''
+        )}
+      </>
+    );
   }
 }
 

@@ -16,6 +16,8 @@ export default class Votes extends Component {
         return <Cats votes={likes} />;
       case 'dislikes':
         return <Cats votes={dislikes} />;
+      default:
+        return <div>No data</div>;
     }
   }
 }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import axios from 'axios';
 
-import './App.css';
+import './styles/App.css';
 import Navbar from './components/Navbar';
 import Vote from './components/Vote';
 import VotesTabs from './components/VotesTabs';

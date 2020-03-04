@@ -12,8 +12,7 @@ export const getImages = () => dispatch => {
   axios
     .get(imagesUrl, {
       params: {
-        limit: 9,
-        page: 0
+        limit: 45
       }
     })
     .then(res => {

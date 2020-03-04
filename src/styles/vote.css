@@ -11,6 +11,7 @@
   grid-template-areas:
     'i i i i i i'
     'b b b b b b';
+  padding-top: 2.7%;
 }
 .profile-image {
   grid-area: i;
@@ -29,6 +30,7 @@ img {
   grid-template-rows: 50px 150px;
   grid-template-columns: 100px 100px;
   justify-content: center;
+  margin-right: 12%;
 }
 .vote-btn {
   border: none;
@@ -41,10 +43,10 @@ img {
   opacity: 0.9;
 }
 #like-btn {
-  background-color: rgb(76, 175, 80);
+  background-color: rgb(244, 67, 54);
 }
 #dislike-btn {
-  background-color: rgb(244, 67, 54);
+  background-color: rgb(168, 166, 166);
 }
 .vote-btn:hover {
   cursor: pointer;
@@ -55,5 +57,5 @@ img {
   width: 60%;
   height: 60%;
   margin: 0 auto;
-  margin: 350px;
+  margin: 360px;
 }

@@ -7,7 +7,8 @@ import {
 const initialState = {
   loading: false,
   errors: false,
-  images: []
+  images: [],
+  totalResults: 0
 };
 
 export default (state = initialState, action) => {
@@ -22,7 +23,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        images: action.payload
+        images: action.payload,
+        totalResults: action.payload.length
       };
     case GET_IMAGES_ERROR:
       return {

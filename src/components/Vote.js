@@ -35,7 +35,7 @@ class Vote extends Component {
     let imageMarkup = !loading ? (
       !errors ? (
         <div className='profle-image'>
-          <img src={image.url} />
+          <img src={image.url} alt='' />
         </div>
       ) : (
         <div className='message'>{errors}</div>
@@ -69,6 +69,13 @@ class Vote extends Component {
   }
 }
 
+Vote.propTypes = {
+  getImage: PropTypes.func.isRequired,
+  postVote: PropTypes.func.isRequired,
+  errors: PropTypes.bool,
+  loading: PropTypes.bool,
+  images: PropTypes.array
+};
 const mapStateToProps = state => ({
   voting: state.voting
 });
